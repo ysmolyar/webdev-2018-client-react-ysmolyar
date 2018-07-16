@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import HelloWorld from 'hello.js';
 ReactDOM.render(
-    <HelloWorld/>,
+    <h1>Welcome to the world's simplest webapp using react!</h1>,
     document.getElementById('root')
 );
 
