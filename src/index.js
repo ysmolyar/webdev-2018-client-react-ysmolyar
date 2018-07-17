@@ -1,10 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import HelloWorld from './hello'
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import '../node_modules/font-awesome/css/font-awesome.min.css';
-import LessonTabs from './LessonTabs'
-import TopicPills from './TopicPills'
+import LessonTabs from './components/LessonTabs'
+import TopicPills from './components/TopicPills'
+import {BrowserRouter as Router, Link, Route} from 'react-router-dom'
+
+
 
 class ModuleListItem extends React.Component {
     render() {
@@ -42,7 +44,7 @@ class CourseCard extends React.Component {
         return (
 
             <div className="card" styles={{width: '18rem'}}>
-                <img className="card-img-top"
+                <img className="card-img-top" alt={"Card image"}
                      src="https://picsum.photos/300/200"/>
                 <div className="card-body">
                     <h5 className="card-title">Card title</h5>
@@ -57,15 +59,14 @@ class CourseCard extends React.Component {
 class BeigeBoard extends React.Component {
     render() {
         return (
+            <Router><Router/>
+                /*
             <div class="container-fluid">
                 <h1>Whiteboard</h1>
 
                 <TopicPills/>
-
                 <LessonTabs/>
-
                 <ModuleList/>
-
                 <div class="card-deck">
                     <CourseCard/>
                     <CourseCard/>
@@ -74,11 +75,20 @@ class BeigeBoard extends React.Component {
                     <CourseCard/>
                 </div>
             </div>
-        )
-    }
-}
+            */
+                )
+                }
+                }
+                }
 
-ReactDOM.render(
-    <BeigeBoard/>,
-    document.getElementById('root')
-);
+                <Router>
+                    <div>
+                        <Link to="/components/CourseList">Course List</Link>
+                        <Route path='/course-list'
+                               component={CourseList}/>
+                    </div>
+                </Router>
+                ReactDOM.render(
+                <BeigeBoard/>,
+                document.getElementById('root')
+                );
