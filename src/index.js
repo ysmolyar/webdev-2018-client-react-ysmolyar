@@ -2,8 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import '../node_modules/font-awesome/css/font-awesome.min.css';
-import LessonTabs from './LessonTabs'
-import TopicPills from './TopicPills'
+import LessonTabs from './components/LessonTabs'
+import TopicPills from './components/TopicPills'
 
 class ModuleListItem extends React.Component {
     render() {
