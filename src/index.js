@@ -41,7 +41,7 @@ class CourseCard extends React.Component {
         return (
 
             <div className="card" styles={{width: '18rem'}}>
-                <img className="card-img-top"
+                <img className="card-img-top" alt={"Card image"}
                      src="https://picsum.photos/300/200"/>
                 <div className="card-body">
                     <h5 className="card-title">Card title</h5>
@@ -60,11 +60,8 @@ class BeigeBoard extends React.Component {
                 <h1>Whiteboard</h1>
 
                 <TopicPills/>
-
                 <LessonTabs/>
-
                 <ModuleList/>
-
                 <div class="card-deck">
                     <CourseCard/>
                     <CourseCard/>
