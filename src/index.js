@@ -33,7 +33,8 @@ class BeigeBoard extends React.Component {
     render() {
         return (
             <Router>
-                <div>
+                <div className="container-fluid">
+                    <h1>BeigeBoard</h1>
                     <Link to="/components/CourseList">Course List</Link>
                     <Route path='/course-list'
                            component={CourseList}/>
