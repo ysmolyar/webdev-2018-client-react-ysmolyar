@@ -5,39 +5,9 @@ import '../node_modules/font-awesome/css/font-awesome.min.css';
 import LessonTabs from './components/LessonTabs'
 import TopicPills from './components/TopicPills'
 import CourseList from './components/CourseList'
+import ModuleList from './components/ModuleList'
+import ModuleListItem from './components/ModuleListItem'
 import {BrowserRouter as Router, Link, Route} from 'react-router-dom'
-
-
-
-class ModuleListItem extends React.Component {
-    render() {
-        return(
-            <li className="list-group-item">
-                {this.props.title}
-                <span className="pull-right">
-          <i style={{'margin-right': '5px'}} className="fa fa-trash"></i>
-          <i className="fa fa-pencil"></i>
-        </span>
-            </li>
-        )
-    }
-}
-
-class ModuleList extends React.Component {
-    render() {
-        return (
-            <div>
-                <h1>Module List</h1>
-                <ul className="list-group">
-                    <ModuleListItem title="Module 1"/>
-                    <ModuleListItem title="Module 2"/>
-                    <ModuleListItem title="Module 3"/>
-                    <ModuleListItem title="Module 4"/>
-                </ul>
-            </div>
-        )
-    }
-}
 
 
 class CourseCard extends React.Component {

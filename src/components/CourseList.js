@@ -1,4 +1,5 @@
 import React from "react";
+import ModuleListItem from "ModuleListItem";
 
 class CourseList extends React.Component {
     render() {
