@@ -7,5 +7,7 @@ formChanged = (event) => {
 
 createCourse = () => {
     this.courseService.createCourse(this.state.newCourse)
-        .then((course) => console.log(course))
+        .then((course) => this.courseService.findAllCourses())
+        .then(courses => {this.setState({courses: courses})})
 };
+
