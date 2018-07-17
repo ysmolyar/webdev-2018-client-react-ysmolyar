@@ -1,5 +1,5 @@
 import React from "react";
-import ModuleListItem from "ModuleListItem";
+import ModuleListItem from "./ModuleListItem";
 
 class ModuleList extends React.Component {
     render() {

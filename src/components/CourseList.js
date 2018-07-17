@@ -1,7 +1,8 @@
 import React from "react";
-import ModuleListItem from "ModuleListItem";
+import ModuleListItem from "./ModuleListItem";
 
 class CourseList extends React.Component {
+
     render() {
         return (
             <div>
@@ -18,12 +19,7 @@ class CourseList extends React.Component {
 }
 export default CourseList;
 //
-// formChanged = (event) => {
-//     console.log(event.target.value);
-//     this.setState({newCourse: {
-//         title: event.target.value
-//         }})
-// };
+
 //
 // createCourse = () => {
 //     this.courseService.createCourse(this.state.newCourse)

@@ -34,6 +34,7 @@ class BeigeBoard extends React.Component {
         return (
             <Router>
                 <div>
+                    <h1>BeigeBoard</h1>
                     <Link to="/components/CourseList">Course List</Link>
                     <Route path='/course-list'
                            component={CourseList}/>
