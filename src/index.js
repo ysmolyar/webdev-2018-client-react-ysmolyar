@@ -18,8 +18,8 @@ class BeigeBoardRouter extends React.Component {
         return (
             <Router>
                 <div>
-                    <Link to="/">Link</Link>
-                    <Route exact={true} path='/' render={() => <CourseManager/>}/>
+                    <Link to="/"></Link>
+                    <Route exact={true} path='/'/>
                     <Route path='/'
                            component={CourseManager}/>
                 </div>
