@@ -17,3 +17,4 @@ class CourseManager extends React.Component {
         )
     }
 }
+export default CourseManager;
