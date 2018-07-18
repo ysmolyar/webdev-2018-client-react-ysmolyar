@@ -1,16 +1,23 @@
 import React, {Component} from "react";
 import ModuleListItem from "./ModuleListItem";
+import CourseServiceClient from '../services/CourseServiceClient'
 
 class CourseList extends React.Component {
+    // var courseService = new CourseServiceClient;
 
     constructor(props) {super(props);}
 
+    // createCourse = () => {
+    //     this.courseService.createCourse(this.state.newCourse)
+    //         .then((course) => this.courseService.findAllCourses())
+    //         .then(courses => {this.setState({courses: courses})})
+    // };
 
     render() {
         return (
             <div>
-                <h1>Course List</h1>
-                <ul className="list-group">
+                <ul className="list-group container-fluid" >
+                    <input className="form-control" placeholder="Course Name"/>
                     <ModuleListItem title="Course 1"/>
                     <ModuleListItem title="Course 2"/>
                     <ModuleListItem title="Course 3"/>
@@ -21,12 +28,8 @@ class CourseList extends React.Component {
     }
 }
 export default CourseList;
-//
 
-//
-// createCourse = () => {
-//     this.courseService.createCourse(this.state.newCourse)
-//         .then((course) => this.courseService.findAllCourses())
-//         .then(courses => {this.setState({courses: courses})})
-// };
+
+
+
 

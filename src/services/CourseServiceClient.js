@@ -11,3 +11,7 @@ function deleteCourse(courseId) {
         .then(function(response) {
             return response;
         })};
+
+function createCourse() {
+
+}
