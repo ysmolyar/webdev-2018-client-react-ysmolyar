@@ -1,17 +1,18 @@
 import React from "react";
 import CourseCard from './CourseCard';
+import CourseList from "./CourseList";
+
 
 class CourseManager extends React.Component {
+
+
     render() {
         return (
-            <div class="container-fluid">
-                <h1>Beigeboard</h1>
-                <div class="card-deck">
-                    <CourseCard/>
-                    <CourseCard/>
-                    <CourseCard/>
-                    <CourseCard/>
-                    <CourseCard/>
+            <div>
+                <h1>Course Manager</h1>
+                <div>
+
+                <CourseList/>
                 </div>
             </div>
         )
