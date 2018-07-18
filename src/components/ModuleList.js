@@ -2,6 +2,9 @@ import React from "react";
 import ModuleListItem from "./ModuleListItem";
 
 class ModuleList extends React.Component {
+
+    constructor(props) {super(props);}
+
     render() {
         return (
             <div>

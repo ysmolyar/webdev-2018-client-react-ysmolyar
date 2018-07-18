@@ -1,7 +1,10 @@
-import React from "react";
+import React, {Component} from "react";
 import ModuleListItem from "./ModuleListItem";
 
 class CourseList extends React.Component {
+
+    constructor(props) {super(props);}
+
 
     render() {
         return (

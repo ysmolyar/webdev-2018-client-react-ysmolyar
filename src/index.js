@@ -6,38 +6,42 @@ import LessonTabs from './components/LessonTabs'
 import TopicPills from './components/TopicPills'
 import CourseList from './components/CourseList'
 import ModuleList from './components/ModuleList'
+import CourseCard from './components/CourseCard'
 import ModuleListItem from './components/ModuleListItem'
 import {BrowserRouter as Router, Link, Route} from 'react-router-dom'
 
 
 
-class BeigeBoard extends React.Component {
+class BeigeBoardRouter extends React.Component {
     render() {
         return (
             <Router>
                 <div>
-                    <h1>BeigeBoard</h1>
                     <Link to="/components/CourseList">Course List</Link>
-                    <Route path='/course-list'
+                    <Route exact={true} path='/' render={() => <BeigeBoard/>}/>
+                    <Route path='/components/CourseList'
                            component={CourseList}/>
                 </div>
             </Router>
-            /*
-        <div class="container-fluid">
-            <h1>Whiteboard</h1>
+        )
 
-            <TopicPills/>
-            <LessonTabs/>
-            <ModuleList/>
-            <div class="card-deck">
-                <CourseCard/>
-                <CourseCard/>
-                <CourseCard/>
-                <CourseCard/>
-                <CourseCard/>
+    }
+}
+
+
+class BeigeBoard extends React.Component {
+    render() {
+        return (
+            <div class="container-fluid">
+                <h1>Beigeboard</h1>
+                <div class="card-deck">
+                    <CourseCard/>
+                    <CourseCard/>
+                    <CourseCard/>
+                    <CourseCard/>
+                    <CourseCard/>
+                </div>
             </div>
-        </div>
-        */
         )
     }
 }
@@ -45,6 +49,6 @@ class BeigeBoard extends React.Component {
 
 
 ReactDOM.render(
-    <BeigeBoard/>,
+    <BeigeBoardRouter/>,
     document.getElementById('root')
 );
