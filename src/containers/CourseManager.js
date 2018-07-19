@@ -1,5 +1,5 @@
 import React from "react";
-import CourseCard from './CourseCard';
+import CourseCard from '../components/CourseCard';
 import CourseList from "../containers/CourseList";
 import CourseManagerHeader from "../containers/CourseManagerHeader";
 
@@ -13,7 +13,7 @@ class CourseManager extends React.Component {
                 <CourseManagerHeader/>
                 <div>
 
-                <CourseList/>
+                    <CourseList/>
                 </div>
             </div>
         )
