@@ -17,7 +17,6 @@ class CourseList extends React.Component {
         return (
             <div>
                 <ul className="list-group container-fluid" >
-                    <input className="form-control" placeholder="Course Name"/>
                     <ModuleListItem title="Course 1"/>
                     <ModuleListItem title="Course 2"/>
                     <ModuleListItem title="Course 3"/>
