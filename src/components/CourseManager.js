@@ -1,6 +1,7 @@
 import React from "react";
 import CourseCard from './CourseCard';
 import CourseList from "../containers/CourseList";
+import CourseManagerHeader from "../containers/CourseManagerHeader";
 
 
 class CourseManager extends React.Component {
@@ -9,7 +10,7 @@ class CourseManager extends React.Component {
     render() {
         return (
             <div>
-                <h1>Course Manager</h1>
+                <CourseManagerHeader/>
                 <div>
 
                 <CourseList/>
