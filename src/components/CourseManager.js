@@ -1,6 +1,6 @@
 import React from "react";
 import CourseCard from './CourseCard';
-import CourseList from "./CourseList";
+import CourseList from "../containers/CourseList";
 
 
 class CourseManager extends React.Component {

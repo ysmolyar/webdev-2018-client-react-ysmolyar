@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import ModuleListItem from "./ModuleListItem";
+import ModuleListItem from "../components/ModuleListItem";
 import CourseServiceClient from '../services/CourseServiceClient'
 
 class CourseList extends React.Component {
