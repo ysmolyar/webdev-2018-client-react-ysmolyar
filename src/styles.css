@@ -1,7 +1,67 @@
-/* this is for CourseManager div */
-div {
-    padding-left: 10px;
-    padding-top: 10px;
-    padding-right: 10px;
-    padding-left: 10px;
+/*!* this is for CourseManager div *!*/
+/*div {*/
+    /*padding-left: 10px;*/
+    /*padding-top: 10px;*/
+    /*padding-right: 10px;*/
+    /*padding-left: 10px;*/
+/*}*/
+
+/* Style the header */
+.header {
+    display: inline-block;
+    padding: 10px 12px;
+    background: dodgerblue;
+    color: #f1f1f1;
+}
+
+.courseManagerHeaderSettingsBtn {
+    display: inline-list-item;
+}
+
+#courseManagerHeaderSettingsIcon {
+    padding: 6px 12px;
+    float: left;
+}
+
+.courseManagerTitle {
+    display: inline;
+    padding: 6px 6px;
+    float: left;
+}
+
+.addCourseFld {
+    display: inline;
+    padding: 10px 12px;
+    float: left;
+}
+
+.newCourseBtn {
+    padding-top: 18px;
+}
+
+.icon-a {
+    color: white;
+    font-size: 1.2em;
+    line-height: 10px;
+}
+.icon-b {
+    color: red;
+    line-height: 10px;
+}
+
+/* Page content */
+.content {
+    padding: 16px;
+}
+
+/* The sticky class is added to the header with JS when it reaches its scroll position */
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%
+}
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+    padding-top: 102px;
 }
