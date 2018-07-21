@@ -75,5 +75,6 @@
 }
 
 .courseList {
+    margin-top: 80px;
     z-index: -1;
 }
