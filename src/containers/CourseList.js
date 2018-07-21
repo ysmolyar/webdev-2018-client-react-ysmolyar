@@ -16,7 +16,7 @@ class CourseList extends React.Component {
     render() {
         return (
             <div>
-                <ul className="list-group container-fluid" >
+                <ul className="col-sm-10 courseList list-group container-fluid" >
                     <ModuleListItem title="Course 1"/>
                     <ModuleListItem title="Course 2"/>
                     <ModuleListItem title="Course 3"/>
