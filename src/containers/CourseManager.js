@@ -11,10 +11,12 @@ class CourseManager extends React.Component {
     render() {
         return (
             <div>
-                <CourseManagerHeader/>
+            <div>
                 <div>
+                    <CourseManagerHeader/>
                     <CourseListHeader/>
                 </div>
+            </div>
                 <div>
                     <CourseList/>
                 </div>
