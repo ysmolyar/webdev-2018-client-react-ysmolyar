@@ -8,7 +8,7 @@
 
 /* Style the header */
 .header {
-    display: inline-block;
+    display: inline-grid;
     padding: 10px 12px;
     background: dodgerblue;
     color: #f1f1f1;
@@ -16,6 +16,7 @@
 
 .courseManagerHeaderSettingsBtn {
     display: inline-list-item;
+    white-space: nowrap;
 }
 
 #courseManagerHeaderSettingsIcon {
@@ -24,7 +25,6 @@
 }
 
 .courseManagerTitle {
-    display: inline;
     padding: 6px 6px;
     float: left;
 }

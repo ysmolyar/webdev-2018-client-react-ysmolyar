@@ -13,14 +13,14 @@ class CourseManagerHeader extends React.Component {
                         <i className="fa fa-2x fa-bars" id="courseManagerHeaderSettingsIcon"></i>
                         <h4 className="courseManagerTitle">Course Manager</h4>
                     </div>
-                    <div className="col col-sm-7">
+                    <div className="col col-sm-5">
                         <input className="form-control addCourseFld" placeholder="New Course Title"/>
                     </div>
                     <div className="col col-sm-auto">
                     <span className="fa-stack newCourseBtn">
-    <i className="fa fa-2x fa-circle fa-stack-2x icon-a"></i>
-    <i className="fa fa-2x fa-plus-circle fa-stack-2x icon-b"></i>
-</span>
+                        <i className="fa fa-2x fa-circle fa-stack-2x icon-a"></i>
+                        <i className="fa fa-2x fa-plus-circle fa-stack-2x icon-b"></i>
+                    </span>
                     </div>
                 </div>
             </div>
