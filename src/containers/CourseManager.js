@@ -14,6 +14,8 @@ class CourseManager extends React.Component {
             <div>
                 <div>
                     <CourseManagerHeader/>
+                </div>
+                <div>
                     <CourseListHeader/>
                 </div>
             </div>
