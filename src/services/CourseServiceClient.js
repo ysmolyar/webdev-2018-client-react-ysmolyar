@@ -28,6 +28,14 @@ class CourseServiceClient {
             });
     }
 
+    findCourseById(courseId) {
+        return fetch(COURSE_API_URL + '/' + courseId)
+            .then(function(response){
+                return response.json();
+            });
+    }
+
+
     updateCourse(courseId, course) {
         var date = new Date();
         var thisCourse = {

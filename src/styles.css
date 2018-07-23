@@ -78,3 +78,8 @@
     margin-top: 20px;
     z-index: -1;
 }
+
+.table-responsive {
+    top: 80px;
+    height: fit-content;
+}

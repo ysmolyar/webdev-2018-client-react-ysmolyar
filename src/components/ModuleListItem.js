@@ -12,8 +12,7 @@ class ModuleListItem extends React.Component {
             <li className="list-group-item">
                 {this.props.title}
                 <span className="pull-right">
-          <i style={{'marginRight': '5px'}} className="fa fa-trash"></i>
-          <i className="fa fa-pencil"></i>
+          <i style={{'marginRight': '5px'}} className="fa fa-times"></i>
         </span>
             </li>
         )
