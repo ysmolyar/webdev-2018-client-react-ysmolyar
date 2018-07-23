@@ -5,13 +5,16 @@ import CourseCard from '../components/CourseCard'
 import CourseEditor from './CourseEditor';
 import CourseList from "./CourseList";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import WhiteboardHeader from "./WhiteboardHeader";
 
 export default class CourseManager extends Component {
     render() {
         return (
             <Router>
                 <div className="container-fluid">
-
+                    <div>
+                    <WhiteboardHeader/>
+                    </div>
                     <Switch>
                 <Route path="/courses"
                        component={CourseList}>

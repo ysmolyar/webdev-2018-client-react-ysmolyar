@@ -36,6 +36,7 @@
     padding-bottom: -10px;
 }
 
+
 .courseListHeaderHeadings {
     padding-top: 10px;
     padding-bottom: 10px;
@@ -80,6 +81,6 @@
 }
 
 .table-responsive {
-    top: 80px;
+    top: 120px;
     height: fit-content;
 }

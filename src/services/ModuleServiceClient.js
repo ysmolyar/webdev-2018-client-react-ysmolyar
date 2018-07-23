@@ -1,4 +1,9 @@
-let _singleton = Symbol();
+import React from 'react';
+
+import {Link} from 'react-router-dom';
+import ModuleList from "../containers/ModuleList";
+import ModuleEditor from "../containers/ModuleEditor";
+
 
 //SHOULD REFLECT MOST UP TO DATE API ENDPOINT
 const MODULE_API_URL = "http://localhost:8080/api/course/{this.state.courseId}/module";
@@ -22,6 +27,32 @@ export default class ModuleServiceClient {
         }
         return this[_singleton];
     }
+
+    findAllModules() {
+        return fetch(MODULE_API_URL)
+            .then(function(response){
+                return response.json();
+            });
+    }
+
+    findAllModulesForGivenCourse(courseId) {
+        return fetch(
+            MODULE_CID_API_URL
+                .replace('CID', courseId))
+            .then(function (response) {
+                return response.json();
+            })
+    }
+    
+    createModule(courseId, module) {
+        return fetch(MODULE_CID_API_URL.replace('CID', courseId), {
+            body: JSON.stringify(module),
+            headers: { 'Content-Type': 'application/json' },
+            method: 'POST'
+        }).then(function (response)
+        { return response.json(); })
+    }
+
 
     deleteModule(moduleId) {
         return fetch(MODULE_API_URL + '/' + moduleId, {
@@ -59,4 +90,3 @@ export default class ModuleServiceClient {
         );
     }
 }
-export default ModuleServiceClient;

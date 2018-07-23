@@ -1,37 +1,19 @@
-.courseRowTitle {
-    float: left;
+i {
+    padding-right: 5px;
 }
 
-.courseRowAuthor {
-padding-left: 10px;
+.courseLink {
+    padding-left: 50px;
 }
 
-.fa-trash {
-margin-right: 5px;
-}
-
-.title{
-    padding-left: 150px;
-    float: left;
-}
-
-.ownedBy {
-    padding-left: 25px;
-}
-
-.lastModified {
-display: inline-list-item;
-    padding-left: 110px;
-    float: right;
+.courseAuthor {
 
 }
 
-.courseRowAuthor {
-    display: inline-list-item;
-    padding-right: 40px;
+.modifiedTime {
+
 }
 
+.deleteBtn {
 
-.list-group-item {
-    display: inline-list-item;
 }

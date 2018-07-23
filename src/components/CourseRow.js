@@ -14,22 +14,28 @@ class CourseRow extends React.Component {
     render() {
         return (
             <tr className="row list-group-item">
-                <td className="col-sm-6 courseRowTitle">
+
+                <td className="col-sm-2 courseLink">
                 <Link to={`/course/${this.props.course.id}/module/lesson`}>
-                    <i className="fa fa-bars blue-bars"></i>
+                    <span><i className="fa fa-bars blue-bars"></i>
                     {this.props.course.title}
+                    </span>
                 </Link>
-                    </td>
-                <td className="col-sm-3 courseRowAuthor">
+                </td>
+
+                <td className="courseAuthor">
                 <b> me </b>
                 </td>
-                <td className="col-sm-4 courseRowDate">
+
+                <td className="modifiedTime">
                     {CourseRow.getCurrentTime(this.props.course.modified)}
                 </td>
-                <td>
+
+                <td className="deleteBtn">
                     <i className="fa fa-trash pull-right" onClick={() => {
                         this.props.delete(this.props.course.id)}}></i>
                 </td>
+
             </tr>
         )
     }
