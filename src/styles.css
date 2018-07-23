@@ -37,12 +37,19 @@
 
 .courseListHeader {
     white-space: nowrap;
-    display: inline-flex;
+    display: inline-table;
     background-color: lightgray;
     text-align: center;
     z-index: 1;
-    margin-bottom: -5px;
+    margin-top: 75px;
+    padding-bottom: -10px;
 }
+
+.courseListHeaderHeadings {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
 
 .addCourseFldAndBtn {
     display: inline-flex;
@@ -75,5 +82,6 @@
 }
 
 .courseList {
+    margin-top: 20px;
     z-index: -1;
 }
