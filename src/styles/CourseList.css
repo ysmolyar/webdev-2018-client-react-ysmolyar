@@ -1,0 +1,34 @@
+b {
+    color: black;
+}
+
+.courseListHeader {
+    overflow: hidden;
+    display: inline;
+    position: fixed;
+    padding: 10px 10px;
+    top: 0;
+    width: 100%;
+    color: #f1f1f1;
+    z-index: 1;
+}
+
+.courseManagerHeaderSettingsBtn {
+    overflow: hidden;
+    display: inline;
+    position: fixed;
+    padding: 10px 12px;
+    top: 0;
+    width: 100%;
+    background: dodgerblue;
+    color: #f1f1f1;
+    z-index: 1;
+}
+
+.courseList {
+    top: 10px;
+    z-index: 0;
+    padding-top: 80px;
+
+}
+

@@ -6,7 +6,6 @@ import './styles.css'
 import LessonTabs from './components/LessonTabs'
 import TopicPills from './components/TopicPills'
 import CourseList from './containers/CourseList'
-import CourseManagerHeader from './containers/CourseManagerHeader';
 import CourseManager from './containers/CourseManager'
 import ModuleList from './components/ModuleList'
 import CourseCard from './components/CourseCard'

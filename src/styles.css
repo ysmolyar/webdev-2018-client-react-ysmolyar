@@ -1,15 +1,7 @@
 
 /* Style the header */
 .navbar {
-    overflow: hidden;
-    display: inline;
-    position: fixed;
-    padding: 10px 12px;
-    top: 0;
-    width: 100%;
-    background: dodgerblue;
-    color: #f1f1f1;
-    z-index: 1;
+
 }
 
 
@@ -69,6 +61,8 @@
     padding-bottom: 18px;
     padding-left: 50px;
     float: right;
+    cursor: pointer;
+
 }
 
 .icon-a {

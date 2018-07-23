@@ -4,14 +4,49 @@
 //
 // The service should send and retrieve all data from the server at a Web service endpoint mapped to ​/api/course
 
-function deleteCourse(courseId) {
-    return fetch(this.COURSE_API_URL) + '/' + courseId, {
-        method: 'delete'
+let _singleton = Symbol();
+
+//SHOULD REFLECT MOST UP TO DATE API ENDPOINT
+const COURSE_API_URL = "http://localhost:8080/api/course";
+
+class CourseServiceClient {
+    constructor(singletonToken) {
+        if (_singleton !== singletonToken)
+            throw new Error('Cannot instantiate directly.');
     }
-        .then(function(response) {
-            return response;
-        })};
 
-function createCourse() {
+    static get instance() {
+        if (!this[_singleton])
+            this[_singleton] = new CourseServiceClient(_singleton);
+        return this[_singleton]
+    }
 
+    findAllCourses() {
+        return fetch(COURSE_API_URL)
+            .then(function(response){
+                return response.json();
+            });
+    }
+
+    deleteCourse(courseId) {
+        return fetch(this.COURSE_API_URL) + '/' + courseId, {
+            method: 'delete'
+        }
+            .then(function (response) {
+                return response;
+            })
+    };
+
+    createCourse(course) {
+        return fetch(COURSE_API_URL, {
+            body: JSON.stringify(course),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'POST'
+        }).then(function (response) {
+            return response.json();
+        })
+    }
 }
+export default CourseServiceClient;
