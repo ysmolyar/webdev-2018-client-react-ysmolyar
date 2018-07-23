@@ -1,0 +1,87 @@
+
+/* Style the header */
+.navbar {
+    overflow: hidden;
+    display: inline;
+    position: fixed;
+    padding: 10px 12px;
+    top: 0;
+    width: 100%;
+    background: dodgerblue;
+    color: #f1f1f1;
+    z-index: 1;
+}
+
+
+#courseManagerHeaderSettingsSpan {
+    padding: 6px 12px;
+    float: left;
+}
+
+.courseManagerTitle {
+    margin-top: 6px;
+    margin-bottom: 6px;
+    width: 100%;
+}
+
+.courseManagerHeaderSettingsBtn {
+    display: inline-list-item;
+    white-space: nowrap;
+}
+
+#courseManagerHeaderSettingsIcon {
+    padding: 6px 12px;
+    float: left;
+}
+
+
+.courseListHeader {
+    white-space: nowrap;
+    display: inline-table;
+    background-color: lightgray;
+    text-align: center;
+    z-index: 1;
+    margin-top: 75px;
+    padding-bottom: -10px;
+}
+
+.courseListHeaderHeadings {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+.addCourseFldAndBtn {
+    display: inline-flex;
+}
+
+.addCourseFld {
+    display: inline;
+    height: 40px;
+    margin-top: 8px;
+    padding: 10px 12px;
+    float: left;
+}
+
+.newCourseBtn {
+    display: inline;
+    padding-top: 23px;
+    padding-bottom: 18px;
+    padding-left: 50px;
+    float: right;
+}
+
+.icon-a {
+    color: white;
+    font-size: 1.2em;
+    line-height: 10px;
+}
+.icon-b {
+    color: red;
+    line-height: 10px;
+}
+
+.courseList {
+    margin-top: 20px;
+    z-index: -1;
+}
