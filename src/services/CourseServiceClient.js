@@ -28,13 +28,32 @@ class CourseServiceClient {
             });
     }
 
-    deleteCourse(courseId) {
-        return fetch(this.COURSE_API_URL) + '/' + courseId, {
-            method: 'delete'
-        }
+    updateCourse(courseId, course) {
+        var date = new Date();
+        var thisCourse = {
+            title: course.title,
+            modified: date.getTime()
+        };
+
+        return fetch(this.COURSE_API_URL + '/' + courseId, {
+            method: 'put',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(thisCourse)
+        })
             .then(function (response) {
+                return response.json();
+            });
+    }
+
+    deleteCourse(courseId) {
+        return fetch(COURSE_API_URL + '/' + courseId, {
+            method: 'DELETE'
+        })
+            .then(function(response){
                 return response;
-            })
+            });
     };
 
     createCourse(course) {

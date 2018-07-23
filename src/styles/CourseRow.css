@@ -1,5 +1,4 @@
 .courseRowTitle {
-padding-left: 10px;
     float: left;
 }
 
@@ -7,6 +6,32 @@ padding-left: 10px;
 padding-left: 10px;
 }
 
-.courseRowModified {
+.fa-trash {
+margin-right: 5px;
+}
 
+.title{
+    padding-left: 150px;
+    float: left;
+}
+
+.ownedBy {
+    padding-left: 25px;
+}
+
+.lastModified {
+display: inline-list-item;
+    padding-left: 110px;
+    float: right;
+
+}
+
+.courseRowAuthor {
+    display: inline-list-item;
+    padding-right: 40px;
+}
+
+
+.list-group-item {
+    display: inline-list-item;
 }

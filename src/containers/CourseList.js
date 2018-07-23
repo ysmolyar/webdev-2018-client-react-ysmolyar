@@ -1,5 +1,6 @@
+import '../../node_modules/font-awesome/css/font-awesome.min.css';
+import '../../node_modules/bootstrap/dist/css/bootstrap.css';
 import React, {Component} from "react";
-import ModuleListItem from "../components/ModuleListItem";
 import CourseServiceClient from '../services/CourseServiceClient'
 import CourseRow from "../components/CourseRow";
 import "../styles.css";
@@ -10,16 +11,23 @@ class CourseList extends React.Component {
     constructor() {
         super();
         this.courseServiceClient = CourseServiceClient.instance;
-        this.state = {courses: []};
+        this.state = {
+            courses: [],
+            course: {
+                title: '',
+                id: ''}
+        };
         this.titleChanged = this.titleChanged.bind(this);
         this.createCourse = this.createCourse.bind(this);
+        this.deleteCourse = this.deleteCourse.bind(this);
+
+    };
+
+    renderCourseRows() {
+        return this.state.courses.map((course) => {
+            return <CourseRow course={course} key={course.id} delete={this.deleteCourse}/>;
+        });
     }
-                // {title: 'Module 1 - jQuery', id: 123},
-                // {title: 'Module 2 - React', id: 234},
-                // {title: 'Module 3 - Redux', id: 345},
-                // {title: 'Module 4 - Angular', id: 456},
-                // {title: 'Module 5 - Node.js', id: 567},
-                // {title: 'Module 6 - MongoDB', id: 678},]};}
 
 
     componentDidMount() {
@@ -30,6 +38,7 @@ class CourseList extends React.Component {
         this.courseServiceClient.findAllCourses()
             .then((courses) => {
                 this.setState({courses: courses});
+                this.setState({course: {title:''}});
                 console.log(courses);
             });
     }
@@ -42,29 +51,29 @@ class CourseList extends React.Component {
 
     createCourse() {
         console.log("Created course!");
-        this.courseServiceClient.createCourse(this.state.course)
-            .then(() => { this.findAllCourses(); });
-    }
+        if (this.state.course.title === '' || this.state.course === undefined) {
 
-    renderCourseRows() {
-        let courses = null;
-
-        console.log("render course rows")
-        console.log(this.state)
-        if(this.state) {
-            courses = this.state.courses.map(
-                function (course) {
-                    return <CourseRow key={course.id}
-                                      course={course}/>
-                }
-            )
+            this.setState({course: {title: "New Course"}}, function () {
+                return this.courseServiceClient.createCourse(this.state.course).then(this.findAllCourses);
+            });
         }
-        return (
-            courses
-        )
+        else {
+            this.courseServiceClient.createCourse(this.state.course).then(this.findAllCourses);
+        }
+
     }
 
 
+    deleteCourse(courseId) {
+
+        let popupResponse = window.confirm("Are you sure you want to delete this course?");
+
+        if (popupResponse === true) {
+            this.courseServiceClient.deleteCourse(courseId)
+                .then(() => {this.findAllCourses();
+            });
+        }
+    }
 
     render() {
         return (
@@ -72,30 +81,37 @@ class CourseList extends React.Component {
                 <div className="row navbar courseManagerHeaderSettingsBtn">
                     <span className="col col-sm-3" id="courseManagerHeaderSettingsSpan">
                         <i className="fa fa-2x fa-bars" id="courseManagerHeaderSettingsIcon"></i>
+
                         <h4 className="courseManagerTitle">Course Manager</h4>
                     </span>
-                    <span className="col col-sm-8 float-left addCourseFldAndBtn" onClick={this.createCourse}>
+                    <span className="col col-sm-8 float-left addCourseFldAndBtn">
                         <input className="form-control addCourseFld" placeholder="New Course Title"
                                onChange={this.titleChanged}/>
-                        <span className="fa-stack newCourseBtn">
+                        <span className="fa-stack newCourseBtn" onClick={this.createCourse}>
                         <i className="fa fa-2x fa-circle fa-stack-2x icon-a"></i>
                         <i className="fa fa-2x fa-plus-circle fa-stack-2x icon-b"></i>
                     </span>
                         </span>
+                    <div>
+                        <span className="row navbar header">
+                        <p className="col-4 title"><b>Title</b></p>
+                        <p className="col-1 ownedBy"><b>Owned By</b></p>
+                        <p className="col-4 lastModified"><b>Last Modified</b></p>
+                         </span>
+                    </div>
                 </div>
-                <span className="row courseListHeader">
-                        <span className="col-sm-1"><b>Title</b></span>
-                        <span className="col-sm-5"><b>Owned By</b></span>
-                        <span className="col-sm-1"><b>Last Modified</b></span>
-                </span>
-                <br/>
-                <ul className="col-sm-10 courseList list-group container-fluid" >
+                <table className="container-fluid table-responsive table-striped table-hover" >
+                    <tbody className="col-sm-10 courseList list-group container-fluid">
+
                     {this.renderCourseRows()}
-                </ul>
-            </div>
+                    </tbody>
+                </table>
+                </div>
         )
-    }
+    };
 }
+
+
 export default CourseList;
 
 

@@ -6,37 +6,32 @@ import '../styles/CourseRow.css';
 
 class CourseRow extends React.Component {
 
-    deleteCourse() {
-        if (window.confirm("Are you sure you want to delete this course?")) {
-            this.props.deleteCourse(this.props.course.id);
-        }
-        else {
-            return;
-        }
+    static getCurrentTime(dateTime) {
+        return new Date(dateTime).toISOString().slice(0, 19).replace('T', ' ');
     }
+
 
     render() {
         return (
-            <li className="row list-group-item">
-                <span className="col-sm-2 courseRowTitle">
+            <tr className="row list-group-item">
+                <td className="col-sm-6 courseRowTitle">
                 <Link to={`/course/${this.props.course.id}/module/lesson`}>
                     <i className="fa fa-bars blue-bars"></i>
                     {this.props.course.title}
                 </Link>
-                    </span>
-                <span className="col-sm-2 courseRowAuthor">
+                    </td>
+                <td className="col-sm-3 courseRowAuthor">
                 <b> me </b>
-                </span>
-                <span className="col-sm-3 courseRowDate">
-                    {this.props.course.modified.substr(0, this.props.course.modified.indexOf("T"))}
-                </span>
-                <span className="pull-right">
-                    <i style={{'marginRight': '5px'}} className="fa fa-trash" onClick={() => {
+                </td>
+                <td className="col-sm-4 courseRowDate">
+                    {CourseRow.getCurrentTime(this.props.course.modified)}
+                </td>
+                <td>
+                    <i className="fa fa-trash pull-right" onClick={() => {
                         this.props.delete(this.props.course.id)
                     }}></i>
-          <i className="fa fa-pencil"></i>
-        </span>
-            </li>
+                </td>
+            </tr>
         )
     }
 }

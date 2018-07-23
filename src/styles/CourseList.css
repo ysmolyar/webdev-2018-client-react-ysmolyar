@@ -2,14 +2,29 @@ b {
     color: black;
 }
 
+tbody {
+top: 100px
+}
+
+.header {
+    overflow: hidden;
+    display: inline-list-item;
+    position: fixed;
+    padding: 10px 12px;
+    top: 75px;
+    right: 15px;
+    width: 100%;
+    background: #d0d0d0;
+    z-index: 1;
+}
 .courseListHeader {
     overflow: hidden;
     display: inline;
     position: fixed;
     padding: 10px 10px;
-    top: 0;
+    top: 50px;
     width: 100%;
-    color: #f1f1f1;
+    background-color: #f1f1f1;
     z-index: 1;
 }
 
@@ -26,7 +41,7 @@ b {
 }
 
 .courseList {
-    top: 10px;
+    top: 70px;
     z-index: 0;
     padding-top: 80px;
 
