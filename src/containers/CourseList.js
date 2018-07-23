@@ -17,10 +17,9 @@ class CourseList extends React.Component {
 
 
     renderListOfModules() {
-        let modules = this.state.modules
-            .map(function(module){
-                return <ModuleListItem
-                    title={module.title} key={module.id}/>
+        let modules = this.state.modules.map(
+            function(module){
+                return <ModuleListItem title={module.title} key={module.id}/>
             });
         return modules;}
 
