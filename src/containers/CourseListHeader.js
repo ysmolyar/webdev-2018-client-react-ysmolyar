@@ -7,16 +7,11 @@ class CourseListHeader extends React.Component {
     render() {
         return (
             <div className="courseListHeader container-fluid">
-                <table className="table">
-                    <tbody>
-                    <tr id="courseListHeaderHeadings">
-                        <th>Title</th>
-                        <th>Owned By</th>
-                        <th>Last modified</th>
-                        <th>&nbsp;</th>
-                    </tr>
-                    </tbody>
-                </table>
+                <div className="row courseListHeaderHeadings">
+                    <div className="col-sm-3"><b>Title</b></div>
+                    <div className="col-sm-5"><b>Owned By</b></div>
+                    <div className="col-sm-1"><b>Last Modified</b></div>
+                </div>
             </div>
 
 
