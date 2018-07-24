@@ -7,7 +7,7 @@
 let _singleton = Symbol();
 
 //SHOULD REFLECT MOST UP TO DATE API ENDPOINT
-const COURSE_API_URL = "https://git.heroku.com/beastmode-webdev-ysmolyar.git/api/course";
+const COURSE_API_URL = "http://localhost:8080/api/course";
 
 class CourseServiceClient {
     constructor(singletonToken) {

@@ -10,21 +10,19 @@ import WhiteboardHeader from "./WhiteboardHeader";
 export default class CourseManager extends Component {
     render() {
         return (
-            <Router>
-                <div className="container-fluid">
-                    <div>
-                    <WhiteboardHeader/>
-                    </div>
+            <div>
+                <WhiteboardHeader/>
+                <Router>
                     <Switch>
-                <Route path="/courses"
-                       component={CourseList}>
-                </Route>
-                <Route path="/course/:courseId/"
-                       component={CourseEditor}>
-                </Route>
+                        <Route path="/courses"
+                               component={CourseList}>
+                        </Route>
+                        <Route path="/course/:courseId/"
+                               component={CourseEditor}>
+                        </Route>
                     </Switch>
-                </div>
-            </Router>
+                </Router>
+            </div>
         )
     }
 }

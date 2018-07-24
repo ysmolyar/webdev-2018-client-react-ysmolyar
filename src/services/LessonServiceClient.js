@@ -1,6 +1,6 @@
 
-const MODULE_CID_API_URL = 'https://git.heroku.com/beastmode-webdev-ysmolyar.git/api/course/CID/module'
-const COURSE_API_URL = "https://git.heroku.com/beastmode-webdev-ysmolyar.git/api/course";
+const MODULE_CID_API_URL = 'http://localhost:8080/api/course/CID/module'
+const COURSE_API_URL = "http://localhost:8080/api/course";
 
 let _singleton = Symbol();
 export default class LessonServiceClient {

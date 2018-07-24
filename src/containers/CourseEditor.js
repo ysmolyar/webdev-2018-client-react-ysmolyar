@@ -4,9 +4,8 @@ import React, {Component} from 'react';
 import ModuleList from './ModuleList';
 import CourseServiceClient from '../services/CourseServiceClient';
 import ModuleEditor from './ModuleEditor';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import '../styles.css';
-
 
 
 export default class CourseEditor extends Component {
@@ -14,7 +13,7 @@ export default class CourseEditor extends Component {
     constructor(props) {
         super(props);
         this.courseServiceClient = CourseServiceClient.instance;
-        this.state = { courseTitle: '', courseId: ''};
+        this.state = {courseTitle: '', courseId: ''};
         this.selectCourse = this.selectCourse.bind(this);
         this.selectModule = this.selectModule.bind(this);
         this.findCourseById = this.findCourseById.bind(this);
@@ -30,10 +29,10 @@ export default class CourseEditor extends Component {
     findCourseById(courseId) {
         this.courseServiceClient
             .findCourseById(courseId)
-                .then((response) => {
-                    console.log(response.title);
-                    this.setState({courseTitle: response.title});
-                })
+            .then((response) => {
+                console.log(response.title);
+                this.setState({courseTitle: response.title});
+            })
     }
 
     selectModule(moduleId) {
@@ -46,18 +45,16 @@ export default class CourseEditor extends Component {
     }
 
     render() {
-        return(
+        return (
             <div className="row">
                 <div className="col-4">
                     <div className="container-fluid">
-            <span>
-              <Link to={`/courses`}>
-                <i className="fa fa-chevron-left"></i>
-              </Link>
-              <h1>
-                {this.state.courseTitle}
-              </h1>
-            </span>
+                        <span>
+                            <Link to={`/courses`}>
+                            <i className="fa fa-chevron-left"></i>
+                        </Link>
+                            <h1>{this.state.courseTitle}</h1>
+                        </span>
                         <h3>Modules</h3>
                         <ModuleList courseId={this.state.courseId}/>
                     </div>
