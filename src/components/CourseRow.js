@@ -13,9 +13,9 @@ class CourseRow extends React.Component {
 
     render() {
         return (
-            <tr className="row list-group-item">
+            <tr className="row courseRow">
 
-                <td className="col-sm-2 courseLink">
+                <td className="col-sm-5 courseLink">
                 <Link to={`/course/${this.props.course.id}/module/lesson`}>
                     <span><i className="fa fa-bars blue-bars"></i>
                     {this.props.course.title}
@@ -23,15 +23,15 @@ class CourseRow extends React.Component {
                 </Link>
                 </td>
 
-                <td className="courseAuthor">
+                <td className="courseAuthor col-sm-2">
                 <b> me </b>
                 </td>
 
-                <td className="modifiedTime">
+                <td className="modifiedTime col-sm-4">
                     {CourseRow.getCurrentTime(this.props.course.modified)}
                 </td>
 
-                <td className="deleteBtn">
+                <td className="deleteBtn col-sm-auto">
                     <i className="fa fa-trash pull-right" onClick={() => {
                         this.props.delete(this.props.course.id)}}></i>
                 </td>

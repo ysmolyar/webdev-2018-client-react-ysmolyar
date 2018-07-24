@@ -85,6 +85,13 @@
     height: fit-content;
 }
 
-.row .col-4 .container-fluid {
+
+.courseEditor {
+    display: inline-block;
     padding-top: 100px;
+}
+
+.courseRow {
+    padding-left: 85px;
+
 }

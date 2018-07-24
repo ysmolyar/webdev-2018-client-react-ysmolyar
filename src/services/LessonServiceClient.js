@@ -1,7 +1,8 @@
 
-const MODULE_CID_API_URL = 'http://localhost:8080/api/course/CID/module'
+const MODULE_CID_API_URL = 'http://localhost:8080/api/course/CID/module';
 const COURSE_API_URL = "http://localhost:8080/api/course";
-
+const LESSON_CID_MID_API_URL = "http://localhost:8080/api/course/CID/module/MID";
+const LESSON_API_URL = "http://localhost:8080/api/lesson";
 let _singleton = Symbol();
 export default class LessonServiceClient {
     constructor(singletonToken) {

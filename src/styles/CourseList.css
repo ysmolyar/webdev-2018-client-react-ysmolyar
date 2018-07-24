@@ -23,6 +23,7 @@ tbody {
     display: inline;
     position: fixed;
     padding: 10px 12px;
+    left: 15px;
     top: 0;
     width: 100%;
     background: dodgerblue;

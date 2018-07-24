@@ -6,10 +6,13 @@
 
 let _singleton = Symbol();
 
+
 //SHOULD REFLECT MOST UP TO DATE API ENDPOINT
 const COURSE_API_URL = "http://localhost:8080/api/course";
 
 class CourseServiceClient {
+
+
     constructor(singletonToken) {
         if (_singleton !== singletonToken)
             throw new Error('Cannot instantiate directly.');

@@ -7,7 +7,6 @@ import ModuleEditor from './ModuleEditor';
 import {Link} from 'react-router-dom';
 import '../styles.css';
 
-
 export default class CourseEditor extends Component {
 
     constructor(props) {
@@ -46,8 +45,23 @@ export default class CourseEditor extends Component {
 
     render() {
         return (
-            <div className="row">
-                <div className="col-4">
+            <div className="courseEditor">
+                <div className="row navbar courseManagerHeaderSettingsBtn">
+                    <span className="col col-sm-3" id="courseManagerHeaderSettingsSpan">
+                        <h4 className="courseManagerTitle">WhiteBoard</h4>
+                    </span>
+                    <span className="col col-sm-8 float-left addCourseFldAndBtn">
+                        <input className="form-control addCourseFld" placeholder="New Course Title"
+                               onChange={this.titleChanged}/>
+                        <span className="fa-stack newCourseBtn" onClick={this.createCourse}>
+                        <i className="fa fa-2x fa-circle fa-stack-2x icon-a"></i>
+                        <i className="fa fa-2x fa-plus-circle fa-stack-2x icon-b"></i>
+                    </span>
+                        </span>
+                </div>
+                <div className="row">
+                <div style={{'display':'inline'}}>
+                <div className="col-5">
                     <div className="container-fluid">
                         <span>
                             <Link to={`/courses`}>
@@ -62,6 +76,8 @@ export default class CourseEditor extends Component {
                 <div className="col-8">
                     <div className="container-fluid">
                         <ModuleEditor courseId={this.state.courseId} moduleId={this.state.moduleId}/>
+                    </div>
+                </div>
                     </div>
                 </div>
             </div>
