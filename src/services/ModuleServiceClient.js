@@ -6,11 +6,11 @@ import ModuleEditor from "../containers/ModuleEditor";
 
 
 //SHOULD REFLECT MOST UP TO DATE API ENDPOINT
-const MODULE_API_URL = "http://localhost:8080/api/course/{this.state.courseId}/module";
+const MODULE_API_URL = "https://git.heroku.com/beastmode-webdev-ysmolyar.git/api/course/{this.state.courseId}/module";
 
-const COURSE_API_URL = "http://localhost:8080/api/course";
+const COURSE_API_URL = "https://git.heroku.com/beastmode-webdev-ysmolyar.git/api/course";
 
-const MODULE_CID_API_URL = 'http://localhost:8080/api/course/CID/module'
+const MODULE_CID_API_URL = 'https://git.heroku.com/beastmode-webdev-ysmolyar.git/api/course/CID/module'
 
 let _singleton = Symbol();
 
@@ -43,7 +43,7 @@ export default class ModuleServiceClient {
                 return response.json();
             })
     }
-    
+
     createModule(courseId, module) {
         return fetch(MODULE_CID_API_URL.replace('CID', courseId), {
             body: JSON.stringify(module),

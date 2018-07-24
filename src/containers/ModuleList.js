@@ -37,9 +37,15 @@ export default class ModuleList extends Component {
     }
 
     createModule() {
-        this.moduleServiceClient
-            .createModule(this.state.courseId, this.state.module)
-            .then(() => { this.findAllModulesForGivenCourse(this.state.courseId); });
+        if (this.state.module.title === '' || this.state.module === undefined) {
+
+            this.setState({courseId: this.state.module.courseId},  {module: {title: "New Module"}}, function () {
+                return this.moduleServiceClient.createModule(this.state.module).then(this.findAllModules);
+            });
+        }
+        else {
+            this.moduleServiceClient.createModule(this.state.module).then(this.findAllModulesForGivenCourse(this.state.courseId));
+        }
     }
 
     titleChanged(event) {
@@ -77,7 +83,7 @@ render() {
         <div>
             <input onChange={this.titleChanged}
                    value={this.state.module.title}
-                   placeholder="title"
+                   placeholder="Add Module Title Here"
                    className="form-control"/>
             <button onClick={this.createModule} className="btn btn-primary btn-block">
                 <i className="fa fa-plus"></i>
