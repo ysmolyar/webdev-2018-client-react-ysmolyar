@@ -12,7 +12,7 @@ export default class CourseManager extends Component {
         return (
                 <Router>
                     <Switch>
-                        <Route exact path="" component={WhiteBoard}></Route>
+                        <Route exact path="/" component={WhiteBoard}></Route>
                         <Route path="/courses"
                                component={CourseList}>
                         </Route>
