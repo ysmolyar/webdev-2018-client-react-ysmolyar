@@ -1,8 +1,6 @@
 
-const MODULE_CID_API_URL = 'https://webdev-2018-react-ysmolyar.herokuapp.com/api/course/CID/module';
-const COURSE_API_URL = "https://webdev-2018-react-ysmolyar.herokuapp.com/api/course";
-const LESSON_CID_MID_API_URL = "https://webdev-2018-react-ysmolyar.herokuapp.com/api/course/CID/module/MID";
-const LESSON_API_URL = "https://webdev-2018-react-ysmolyar.herokuapp.com/api/lesson";
+const LESSON_CID_MID_API_URL = "https://beastmode-webdev-ysmolyar.herokuapp.com/api/course/CID/module/MID";
+const LESSON_API_URL = "https://beastmode-webdev-ysmolyar.herokuapp.com/api/lesson";
 let _singleton = Symbol();
 export default class LessonServiceClient {
     constructor(singletonToken) {

@@ -8,7 +8,7 @@ let _singleton = Symbol();
 
 
 //SHOULD REFLECT MOST UP TO DATE API ENDPOINT
-const COURSE_API_URL = "https://webdev-2018-react-ysmolyar.herokuapp.com/api/course";
+const COURSE_API_URL = "https://beastmode-webdev-ysmolyar.herokuapp.com/api/course";
 
 class CourseServiceClient {
 
