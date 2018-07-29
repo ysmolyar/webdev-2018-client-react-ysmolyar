@@ -6,11 +6,14 @@ import ModuleEditor from "../containers/ModuleEditor";
 
 
 //SHOULD REFLECT MOST UP TO DATE API ENDPOINT
-const MODULE_API_URL = "https://beastmode-webdev-ysmolyar.herokuapp.com/api/course/{this.state.courseId}/module";
+//https://beastmode-webdev-ysmolyar.herokuapp.com/api/course/{this.state.courseId}/module
+const MODULE_API_URL = "https://localhost:8080/api/course/{this.state.courseId}/module";
 
-const COURSE_API_URL = "https://beastmode-webdev-ysmolyar.herokuapp.com/api/course";
+// https://beastmode-webdev-ysmolyar.herokuapp.com/api/course'
+const COURSE_API_URL = "https://localhost:8080/api/course";
 
-const MODULE_CID_API_URL = 'https://beastmode-webdev-ysmolyar.herokuapp.com/api/course/CID/module'
+//https://beastmode-webdev-ysmolyar.herokuapp.com/api/course/CID/module
+const MODULE_CID_API_URL = 'https://localhost:8080/api/course/CID/module'
 
 let _singleton = Symbol();
 

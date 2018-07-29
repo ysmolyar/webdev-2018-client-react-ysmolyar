@@ -10,13 +10,13 @@ class CourseList extends React.Component {
 
     constructor() {
         super();
-        this.courseServiceClient = CourseServiceClient.instance;
         this.state = {
             courses: [],
             course: {
                 title: '',
                 id: ''}
         };
+        this.courseServiceClient = CourseServiceClient.instance;
         this.titleChanged = this.titleChanged.bind(this);
         this.createCourse = this.createCourse.bind(this);
         this.deleteCourse = this.deleteCourse.bind(this);
@@ -102,7 +102,6 @@ class CourseList extends React.Component {
                     </tr>
                     </thead>
                     <tbody className="courseList list-group container-fluid">
-
                     {this.renderCourseRows()}
                     </tbody>
                 </table>
