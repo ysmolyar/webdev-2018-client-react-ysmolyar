@@ -45,10 +45,11 @@ class CourseServiceClient {
         var date = new Date();
         var thisCourse = {
             title: course.title,
-            modified: date.getTime()
+            modified: date.getTime(),
+            modules: course.modules
         };
 
-        return fetch(this.COURSE_API_URL + '/' + courseId, {
+        return fetch(COURSE_API_URL + '/' + courseId, {
             method: 'put',
             headers: {
                 'Content-Type': 'application/json'

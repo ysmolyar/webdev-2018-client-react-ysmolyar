@@ -24,18 +24,18 @@ class CourseList extends React.Component {
 
     };
 
-    renderCourseRows() {
+    renderCourseRows = () => {
         return this.state.courses.map((course) => {
             return <CourseRow course={course} key={course.id} delete={this.deleteCourse} select={this.props.select}/>;
         });
-    }
+    };
 
 
     componentDidMount() {
         this.findAllCourses();
     }
 
-    findAllCourses() {
+    findAllCourses = () => {
         this.courseServiceClient.findAllCourses()
             .then((courses) => {
                 this.setState({courses: courses});
@@ -53,19 +53,41 @@ class CourseList extends React.Component {
         });
     }
 
-    createCourse() {
+    createCourse = () => {
         console.log("Created course!");
+        var thisDate = new Date().toISOString();
+
         if (this.state.course.title === '' || this.state.course === undefined) {
 
+            const mtCourse = {
+                title: "New Course",
+                owner: "Me",
+                created: thisDate,
+                modified: thisDate
+            };
+
             this.setState({course: {title: "New Course"}}, function () {
-                return this.courseServiceClient.createCourse(this.state.course).then(this.findAllCourses);
+                return this.courseServiceClient.createCourse(this.state.course)
+                    .then(()  => this.findAllCourses())
+                    .then(courses => this.setState({courses: courses}))
             });
         }
         else {
-            this.courseServiceClient.createCourse(this.state.course).then(this.findAllCourses);
+
+            const thisCourse = {
+                title: this.state.course.title,
+                //owner:this.state.newCourse.owner,
+                owner: "Me",
+                created: thisDate,
+                modified: thisDate
+            };
+
+            this.courseService.createCourse(thisCourse)
+                .then(()  => this.courseService.findAllCourses())
+                .then(courses => this.setState({courses: courses}))
         }
 
-    }
+    };
 
 
     deleteCourse(courseId) {
@@ -93,7 +115,7 @@ class CourseList extends React.Component {
                     </tr>
                     </thead>
                     <tbody className="courseList list-group container-fluid">
-                    {this.renderCourseRows()}
+                    {this.renderCourseRows}
                     </tbody>
                 </table>
                 </div>

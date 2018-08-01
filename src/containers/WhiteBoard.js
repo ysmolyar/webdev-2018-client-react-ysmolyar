@@ -10,7 +10,7 @@ import "../styles/CourseList.css"
 import CourseManager from "./CourseManager";
 import ModuleList from "./ModuleList";
 import CourseEditor from "./CourseEditor";
-import WhiteBoardHeader from "./WhiteBoardHeader";
+import WhiteBoardHeader from "../components/WhiteBoardHeader";
 import ModuleEditor from "./ModuleEditor";
 
 
@@ -37,7 +37,7 @@ export default class WhiteBoard extends React.Component {
                                    component={CourseManager}/>
                             <Route path='/course/:courseId'
                                    component={CourseEditor}/>
-                            <Route path='/course/:courseId/module/:moduleId'
+                            <Route path='/course/:courseId/edit/:moduleId'
                                    component={ModuleEditor}/>
                         </Switch>
                     </div>

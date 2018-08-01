@@ -29,19 +29,23 @@ export default class ModuleServiceClient {
     }
 
     findAllModules() {
-        return fetch(MODULE_API_URL)
-            .then(function(response){
+        return fetch(MODULE_API_URL, {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function(response){
                 return response.json();
             });
     };
 
     findAllModulesForGivenCourse(courseId) {
-        return fetch(
-            MODULE_CID_API_URL.replace('CID', courseId))
-            .then(function (response) {
+        return fetch(MODULE_CID_API_URL.replace('CID', courseId), {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
                 return response.json();
-            });
-    };
+            })
+
+    }
 
     createModule(courseId, module) {
         return fetch(MODULE_CID_API_URL.replace('CID', courseId), {
