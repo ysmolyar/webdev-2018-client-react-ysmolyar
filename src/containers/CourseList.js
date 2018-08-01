@@ -11,11 +11,12 @@ class CourseList extends React.Component {
     constructor() {
         super();
         this.state = {
-            courses: [],
             course: {
                 title: '',
-                id: ''}
+                id: ''},
+            courses: []
         };
+
         this.courseServiceClient = CourseServiceClient.instance;
         this.titleChanged = this.titleChanged.bind(this);
         this.createCourse = this.createCourse.bind(this);
@@ -25,7 +26,7 @@ class CourseList extends React.Component {
 
     renderCourseRows() {
         return this.state.courses.map((course) => {
-            return <CourseRow course={course} key={course.id} delete={this.deleteCourse}/>;
+            return <CourseRow course={course} key={course.id} delete={this.deleteCourse} select={this.props.select}/>;
         });
     }
 
@@ -44,8 +45,11 @@ class CourseList extends React.Component {
     }
 
     titleChanged(event) {
+        var thisDate = new Date();
         this.setState({
-            course: { title: event.target.value }
+            course: { title: event.target.value,
+                      created: thisDate.toISOString(),
+                      creator: this.state.course.creator}
         });
     }
 
@@ -78,19 +82,6 @@ class CourseList extends React.Component {
     render() {
         return (
             <div>
-                <div className="row navbar courseManagerHeaderSettingsBtn">
-                    <span className="col col-sm-3" id="courseManagerHeaderSettingsSpan">
-                        <h4 className="courseManagerTitle">WhiteBoard</h4>
-                    </span>
-                    <span className="col col-sm-8 float-left addCourseFldAndBtn">
-                        <input className="form-control addCourseFld" placeholder="New Course Title"
-                               onChange={this.titleChanged}/>
-                        <span className="fa-stack newCourseBtn" onClick={this.createCourse}>
-                        <i className="fa fa-2x fa-circle fa-stack-2x icon-a"></i>
-                        <i className="fa fa-2x fa-plus-circle fa-stack-2x icon-b"></i>
-                    </span>
-                        </span>
-                </div>
                 <table className="table table-striped table-hover" >
                     <thead>
                     <tr className="row header">

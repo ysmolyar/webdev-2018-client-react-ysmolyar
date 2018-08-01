@@ -4,23 +4,24 @@ import React, {Component} from 'react'
 import CourseCard from '../components/CourseCard'
 import CourseEditor from './CourseEditor';
 import CourseList from "./CourseList";
-import WhiteBoard from "./WhiteBoard";
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+
+
 
 export default class CourseManager extends Component {
+    constructor(props) {
+        super(props);
+        // this.courseService = CourseService.instance;
+        this.state = {
+            course: {title: '',
+                     courseId: ''},
+            courses: []
+        };
+
+    }
+
     render() {
         return (
-                <Router>
-                    <Switch>
-                        <Route exact path="/" component={WhiteBoard}></Route>
-                        <Route path="/courses"
-                               component={CourseList}>
-                        </Route>
-                        <Route path="/course/:courseId/"
-                               component={CourseEditor}>
-                        </Route>
-                    </Switch>
-                </Router>
+            <CourseList select={this.props.courseId}/>
         )
     }
 }

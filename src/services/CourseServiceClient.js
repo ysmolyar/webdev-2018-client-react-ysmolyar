@@ -9,7 +9,7 @@ let _singleton = Symbol();
 
 //SHOULD REFLECT MOST UP TO DATE API ENDPOINT
 // https://beastmode-webdev-ysmolyar.herokuapp.com/api/course
-const COURSE_API_URL = "https://localhost:8080/api/course";
+const COURSE_API_URL = "http://localhost:8080/api/course";
 
 class CourseServiceClient {
 
@@ -31,6 +31,7 @@ class CourseServiceClient {
                 return response.json();
             });
     }
+
 
     findCourseById(courseId) {
         return fetch(COURSE_API_URL + '/' + courseId)

@@ -17,7 +17,6 @@ export default class ModuleEditor
     }
 
     componentWillReceiveProps(newProps) {
-        console.log(newProps)
         this.selectModule(newProps.moduleId);
         this.selectCourse(newProps.courseId);
     }

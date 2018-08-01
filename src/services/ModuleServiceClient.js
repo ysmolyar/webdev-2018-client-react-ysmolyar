@@ -7,13 +7,10 @@ import ModuleEditor from "../containers/ModuleEditor";
 
 //SHOULD REFLECT MOST UP TO DATE API ENDPOINT
 //https://beastmode-webdev-ysmolyar.herokuapp.com/api/course/{this.state.courseId}/module
-const MODULE_API_URL = "https://localhost:8080/api/course/{this.state.courseId}/module";
-
-// https://beastmode-webdev-ysmolyar.herokuapp.com/api/course'
-const COURSE_API_URL = "https://localhost:8080/api/course";
+const MODULE_API_URL = "http://localhost:8080/api/module";
 
 //https://beastmode-webdev-ysmolyar.herokuapp.com/api/course/CID/module
-const MODULE_CID_API_URL = 'https://localhost:8080/api/course/CID/module'
+const MODULE_CID_API_URL = 'http://localhost:8080/api/course/CID/module';
 
 let _singleton = Symbol();
 
@@ -36,16 +33,15 @@ export default class ModuleServiceClient {
             .then(function(response){
                 return response.json();
             });
-    }
+    };
 
     findAllModulesForGivenCourse(courseId) {
         return fetch(
-            MODULE_CID_API_URL
-                .replace('CID', courseId))
+            MODULE_CID_API_URL.replace('CID', courseId))
             .then(function (response) {
                 return response.json();
-            })
-    }
+            });
+    };
 
     createModule(courseId, module) {
         return fetch(MODULE_CID_API_URL.replace('CID', courseId), {
@@ -54,7 +50,7 @@ export default class ModuleServiceClient {
             method: 'POST'
         }).then(function (response)
         { return response.json(); })
-    }
+    };
 
 
     deleteModule(moduleId) {
@@ -65,31 +61,4 @@ export default class ModuleServiceClient {
                 return response;
             });
     };
-
-
-    render() {
-        return(
-            <div className="row">
-                <div className="col-4">
-                    <div className="container-fluid">
-            <span>
-              <Link to={`/courses`}>
-                <i className="fa fa-chevron-left"></i>
-              </Link>
-              <h1>
-                {this.state.courseTitle}
-              </h1>
-            </span>
-                        <h3>Modules</h3>
-                        <ModuleList courseId={this.state.courseId}/>
-                    </div>
-                </div>
-                <div className="col-8">
-                    <div className="container-fluid">
-                        <ModuleEditor courseId={this.state.courseId} moduleId={this.state.moduleId}/>
-                    </div>
-                </div>
-            </div>
-        );
-    }
 }

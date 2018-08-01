@@ -1,66 +1,119 @@
 import React, {Component} from "react";
 import ModuleListItem from "../components/ModuleListItem";
 import ModuleServiceClient from "../services/ModuleServiceClient";
-
+import CourseServiceClient from "../services/CourseServiceClient";
 export default class ModuleList extends Component {
     constructor(props) {
         super(props);
         this.moduleServiceClient = ModuleServiceClient.instance;
-
+        this.courseServiceClient = CourseServiceClient.instance;
         this.state = {
             courseId: '',
-            module: {title: ''},
+            course: {},
+            module: {
+                title: '',
+                courseId: '',
+                lessons: [{title: ''}], },
+            moduleId: '',
             modules: []
         };
         this.createModule = this.createModule.bind(this);
-        this.titleChanged = this.titleChanged.bind(this);
         this.deleteModule = this.deleteModule.bind(this);
-        this.setCourseId = this.setCourseId.bind(this);
+        this.selectModule = this.selectModule.bind(this);
+    }
+
+    componentDidMount() {
+        this.setCourseId(this.props.courseId);
+        this.findCourseById(this.props.courseId);
+
+        //console.log("props id module list" + this.props.courseId);
 
     }
 
-    setCourseId(courseId) { this.setState({courseId: courseId});}
+    findCourseById = (courseId) => {
+        this.courseServiceClient.findCourseById(courseId)
+            .then((course) => this.setState({course: course}));
+    };
 
-    setModules(modules) { this.setState({modules: modules}); }
+    componentWillReceiveProps(newProps) {
+        this.setCourseId(newProps.courseId);
+        this.findAllModulesForGivenCourse(newProps.courseId);
+    };
 
-    componentDidMount() { this.setCourseId(this.props.courseId);}
+    selectModule = (moduleId) => {
+        this.setState({moduleId: moduleId});
+    };
+
+    titleChanged = (event) => {
+        this.setState({module: {title: event.target.value, courseId: this.state.module.courseId}});
+    };
+
 
     findAllModulesForGivenCourse(courseId) {
         this.moduleServiceClient
             .findAllModulesForGivenCourse(courseId)
-            .then((modules) => {this.setModules(modules)});
+            .then((modules) => {this.setState({modules: modules})});
     }
 
-    componentWillReceiveProps(newProps){
-        this.setCourseId(newProps.courseId);
-        this.findAllModulesForGivenCourse(newProps.courseId)
+    setCourseId = (courseId) => {
+        this.setState({courseId: courseId});
     }
 
+
+    /*
+        createModule = (module) => {
+            module.courseId = this.props.courseId;
+            this.state.course.modules.push(module);
+            this.moduleServiceClient.createModule(module.courseId, module);
+            this.courseServiceClient.updateCourse(module.courseId, this.state.course);
+        };
+
+        */
     createModule() {
+
+
+        this.findCourseById(this.state.courseId);
+        const mtModule = {title: "New Module"};
+
         if (this.state.module.title === '' || this.state.module === undefined) {
 
-            this.setState({courseId: this.state.module.courseId},  {module: {title: "New Module"}}, function () {
-                return this.moduleServiceClient.createModule(this.state.module).then(this.findAllModules);
-            });
+            this.moduleServiceClient.createModule(this.state.courseId, mtModule)
+                .then(() => this.findAllModulesForGivenCourse(this.state.courseId))
+                .then(modules => this.setState({modules: modules}))
+                .then(() => this.renderListOfModules);
+
         }
         else {
-            this.moduleServiceClient.createModule(this.state.module).then(this.findAllModulesForGivenCourse(this.state.courseId));
+
+            this.moduleServiceClient.createModule(this.state.courseId, this.state.module)
+                .then(() => {this.findAllModulesForGivenCourse(this.state.courseId); })
+                .then(modules => this.setState({modules: modules}))
+                .then(() => this.renderListOfModules);
+
         }
     }
 
-    titleChanged(event) {
-        console.log(event.target.value);
-        this.setState({module: {title: event.target.value}});
-    }
 
-    renderListOfModules() {
-        var rows = this.state.modules.map((module) => {
-            return <ModuleListItem courseId={this.state.courseId} module={module} key={module.id} delete={this.deleteModule}/>
-        });
-        return (
-            rows
-        )
-    }
+
+    renderListOfModules = () => {
+        console.log("MODULES FROM MODULE LIST:" + this.state.modules);
+        let modules = null;
+
+        if (this.state.modules) {
+
+            this.moduleServiceClient.findAllModulesForGivenCourse(this.state.courseId)
+                .then((modules) => this.setState({modules: modules}));
+            modules = this.state.modules.map((module) => {
+                return <ModuleListItem courseId={this.state.courseId}
+                                       module={module}
+                                       key={module.id}
+                                       delete={this.deleteModule}/>
+            });
+        }
+
+        return modules;
+
+    };
 
     deleteModule(moduleId) {
 
@@ -78,21 +131,22 @@ export default class ModuleList extends Component {
     }
 
 
-render() {
-    return (
-        <div>
-            <input onChange={this.titleChanged}
-                   value={this.state.module.title}
-                   placeholder="Add Module Title Here"
-                   className="form-control"/>
-            <button onClick={this.createModule} className="btn btn-primary btn-block">
-                <i className="fa fa-plus"></i>
-            </button>
-            <br/>
-            <ul className="list-group">
-                {this.renderListOfModules()}
-            </ul>
-        </div>
-    );
-}
+    render() {
+        return (
+            <div>
+                <input onChange={this.titleChanged}
+                       value={this.state.module.title}
+                       placeholder="Add Module Title Here"
+                       className="form-control"/>
+                <button onClick={this.createModule} className="btn btn-primary btn-block">
+                    <i className="fa fa-plus"></i>
+                </button>
+                <br/>
+                <ul className="list-group">
+                    {this.renderListOfModules}
+                </ul>
+
+            </div>
+        );
+    }
 }

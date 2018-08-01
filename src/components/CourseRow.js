@@ -16,7 +16,7 @@ class CourseRow extends React.Component {
             <tr className="row courseRow">
 
                 <td className="col-sm-5 courseLink">
-                <Link to={`/course/${this.props.course.id}/module/lesson`}>
+                <Link to={`/course/${this.props.course.id}/edit`}>
                     <span><i className="fa fa-bars blue-bars"></i>
                     {this.props.course.title}
                     </span>
