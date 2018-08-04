@@ -7,10 +7,10 @@ import ModuleEditor from "../containers/ModuleEditor";
 
 //SHOULD REFLECT MOST UP TO DATE API ENDPOINT
 //https://beastmode-webdev-ysmolyar.herokuapp.com/api/course/{this.state.courseId}/module
-const MODULE_API_URL = "http://localhost:8080/api/module";
+const MODULE_API_URL = "https://beastmode-webdev-ysmolyar.herokuapp.com/api/module";
 
 //https://beastmode-webdev-ysmolyar.herokuapp.com/api/course/CID/module
-const MODULE_CID_API_URL = 'http://localhost:8080/api/course/CID/module';
+const MODULE_CID_API_URL = 'https://beastmode-webdev-ysmolyar.herokuapp.com/api/course/CID/module';
 
 let _singleton = Symbol();
 
