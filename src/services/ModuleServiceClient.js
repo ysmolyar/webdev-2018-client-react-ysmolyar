@@ -43,9 +43,9 @@ export default class ModuleServiceClient {
             headers: { 'Content-Type': 'application/json' }
         }).then(function (response) {
                 return response.json();
-            })
+            });
 
-    }
+    };
 
     createModule(courseId, module) {
         return fetch(MODULE_CID_API_URL.replace('CID', courseId), {
@@ -53,7 +53,9 @@ export default class ModuleServiceClient {
             headers: { 'Content-Type': 'application/json' },
             method: 'POST'
         }).then(function (response)
-        { return response.json(); })
+        {
+            return response.json();
+        })
     };
 
 

@@ -24,7 +24,7 @@ export default class LessonServiceClient {
             });
     }
 
-    findAllLessonsForModule(courseId, moduleId) {
+    findAllLessonsForGivenModule(courseId, moduleId) {
         return fetch(
             LESSON_CID_MID_API_URL
                 .replace('CID', courseId)

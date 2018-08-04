@@ -3,9 +3,8 @@ import '../../node_modules/bootstrap/dist/css/bootstrap.css';
 import React, {Component} from 'react';
 import ModuleList from './ModuleList';
 import CourseServiceClient from '../services/CourseServiceClient';
-import ModuleServiceClient from '../services/ModuleServiceClient';
 import ModuleEditor from './ModuleEditor';
-import {Link} from 'react-router-dom';
+import {Link, Route} from 'react-router-dom';
 import '../styles.css';
 
 export default class CourseEditor extends Component {
@@ -46,14 +45,15 @@ export default class CourseEditor extends Component {
                             <i className="fa fa-chevron-left"></i>
                         </Link>
                         </span>
-                        <h3>{this.state.course.title}</h3>
+                        <h3>Editing: {this.state.course.title}</h3>
+                        <br/>
                         <h3>Modules</h3>
-                        <ModuleList courseId={this.state.courseId}/>
+                        <ModuleList courseId={this.props.match.params.courseId}/>
                     </div>
                 </div>
                 <div className="col-8">
                     <div className="container-fluid">
-                        <ModuleEditor courseId={this.state.courseId}/>
+                        <Route path="/course/:courseId/module/:moduleId" component={ModuleEditor}/>
                     </div>
                 </div>
             </div>

@@ -21,13 +21,10 @@ class CourseList extends React.Component {
         this.titleChanged = this.titleChanged.bind(this);
         this.createCourse = this.createCourse.bind(this);
         this.deleteCourse = this.deleteCourse.bind(this);
+        this.renderCourseRows = this.renderCourseRows.bind(this);
+        this.findAllCourses = this.findAllCourses.bind(this);
+        this.updateCourse = this.updateCourse.bind(this);
 
-    };
-
-    renderCourseRows = () => {
-        return this.state.courses.map((course) => {
-            return <CourseRow course={course} key={course.id} delete={this.deleteCourse} select={this.props.select}/>;
-        });
     };
 
 
@@ -35,25 +32,37 @@ class CourseList extends React.Component {
         this.findAllCourses();
     }
 
-    findAllCourses = () => {
+    renderCourseRows() {
+        let courses = this.state.courses.map((course) => {
+            return <CourseRow course={course}
+                              key={course.id}
+                              delete={this.deleteCourse}
+                              onClick={this.updateCourse}/>;
+        });
+        return courses;
+    }
+
+    updateCourse(courseId, course) {
+        this.courseServiceClient.updateCourse(courseId, course);
+    }
+
+    findAllCourses() {
         this.courseServiceClient.findAllCourses()
             .then((courses) => {
                 this.setState({courses: courses});
-                this.setState({course: {title:''}});
                 console.log(courses);
             });
     }
 
     titleChanged(event) {
-        var thisDate = new Date();
         this.setState({
-            course: { title: event.target.value,
-                      created: thisDate.toISOString(),
-                      creator: this.state.course.creator}
+            course: {
+                title: event.target.value
+            }
         });
     }
 
-    createCourse = () => {
+    createCourse() {
         console.log("Created course!");
         var thisDate = new Date().toISOString();
 
@@ -66,25 +75,13 @@ class CourseList extends React.Component {
                 modified: thisDate
             };
 
-            this.setState({course: {title: "New Course"}}, function () {
-                return this.courseServiceClient.createCourse(this.state.course)
-                    .then(()  => this.findAllCourses())
-                    .then(courses => this.setState({courses: courses}))
-            });
+                this.courseServiceClient.createCourse(mtCourse)
+                    .then(()  => {this.findAllCourses()});
         }
         else {
 
-            const thisCourse = {
-                title: this.state.course.title,
-                //owner:this.state.newCourse.owner,
-                owner: "Me",
-                created: thisDate,
-                modified: thisDate
-            };
-
-            this.courseService.createCourse(thisCourse)
-                .then(()  => this.courseService.findAllCourses())
-                .then(courses => this.setState({courses: courses}))
+            this.courseServiceClient.createCourse(this.state.course)
+                .then(()  => {this.findAllCourses();});
         }
 
     };
@@ -96,8 +93,7 @@ class CourseList extends React.Component {
 
         if (popupResponse === true) {
             this.courseServiceClient.deleteCourse(courseId)
-                .then(() => {this.findAllCourses();
-            });
+                .then(() => {this.findAllCourses();});
         }
     }
 
@@ -115,7 +111,7 @@ class CourseList extends React.Component {
                     </tr>
                     </thead>
                     <tbody className="courseList list-group container-fluid">
-                    {this.renderCourseRows}
+                    {this.renderCourseRows()}
                     </tbody>
                 </table>
                 </div>

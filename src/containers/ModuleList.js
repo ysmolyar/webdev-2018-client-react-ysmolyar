@@ -11,96 +11,86 @@ export default class ModuleList extends React.Component {
             courseId: '',
             course: {title: ''},
             module: {title: 'New Module' },
+            moduleIdToDelete: '',
             modules: []
         };
         this.moduleServiceClient = ModuleServiceClient.instance;
-        this.courseServiceClient = CourseServiceClient.instance;
+        this.setCourse = this.setCourse.bind(this);
+        this.setCourseId = this.setCourseId.bind(this);
+        this.titleChanged = this.titleChanged.bind(this);
 
+        this.setModuleToDelete = this.setModuleToDelete.bind(this);
+        this.setModules = this.setModules.bind(this);
+        this.deleteModule = this.deleteModule.bind(this);
+        this.createModule = this.createModule.bind(this);
+        this.renderListOfModules = this.renderListOfModules.bind(this);
+        this.findAllModulesForGivenCourse = this.findAllModulesForGivenCourse.bind(this);
     }
 
     componentDidMount() {
         this.setCourseId(this.props.courseId);
-        console.log("GOT COURSEID FROM PROPS: " + this.props.courseId);
-        this.findCourseById(this.props.courseId);
+        console.log("MODULELIST GOT COURSEID FROM PROPS DURING MOUNT: " + this.props.courseId);
         this.findAllModulesForGivenCourse(this.props.courseId);
-
-    }
-
-    componentWillReceiveProps(newProps){
-        this.setCourseId(newProps.courseId);
-        this.findCourseById(newProps.courseId);
-        this.findAllModulesForGivenCourse(newProps.courseId);
     }
 
 
-    findCourseById = (courseId) => {
-        this.courseServiceClient.findCourseById(courseId)
-            .then((course) => this.setCourse(course));
+    setModuleToDelete(moduleId) {
+        this.setState({moduleIdToDelete: moduleId});
     };
 
-    findAllModulesForGivenCourse = (courseId) => {
+
+    findAllModulesForGivenCourse(courseId) {
         this.moduleServiceClient
             .findAllModulesForGivenCourse(courseId)
             .then((modules) => {this.setModules(modules)});
     };
 
-    titleChanged = (event) => {
+    titleChanged(event) {
         this.setState({module: {title: event.target.value}});
     };
 
-    setCourseId = (courseId) => {
+    setCourseId(courseId) {
         this.setState({courseId: courseId});
     };
 
-    setCourse = (course) => {
+    setCourse(course) {
         this.setState({course: course});
     };
 
-    setModules = (modules) => {
+    setModules(modules) {
         this.setState({modules: modules})
     };
 
-    renderListOfModules = () => {
-        let modules = null;
-
-        if (this.state) {
-            console.log("STATE COURSEID: " + this.state.courseId);
-            this.moduleServiceClient
-                .findAllModulesForGivenCourse(this.props.courseId)
-                .then((modules) => {this.setState({modules: modules})});
-            modules = this.state.modules.map((module) =>
-                    <ModuleListItem courseId={this.state.courseId}
-                                module={module}
-                                key={module.id}
-                                delete={this.deleteModule}/>
-                )}
+    renderListOfModules() {
+        let modules = '';
+         modules = this.state.modules.map((module) => {
+            return <ModuleListItem courseId={this.state.courseId}
+                                   module={module}
+                                   key={module.id}
+                                   delete={this.setModuleToDelete}/>
+    });
             return modules;
         };
 
 
-    createModule = () => {
+    createModule() {
 
         const mtModule = {title: "New Module"};
 
         if (this.state.module.title === '') {
 
-            this.moduleServiceClient.createModule(this.state.courseId, mtModule)
-                .then(() => this.findAllModulesForGivenCourse(this.state.courseId))
-                .then(modules => this.setState({modules: modules}));
+            this.moduleServiceClient.createModule(this.props.courseId, mtModule)
+                .then(() => {this.findAllModulesForGivenCourse(this.props.courseId);});
         }
         else {
 
-            var thisModule = {title: this.state.title, course: this.state.course};
-            this.state.modules.push(thisModule);
-
-            this.moduleServiceClient.createModule(this.state.courseId, this.state.module)
-                .then(() => {this.findAllModulesForGivenCourse(this.state.courseId); })
-                .then(modules => this.setState({modules: modules}));
+            this.moduleServiceClient.createModule(this.props.courseId, this.state.module)
+                .then(() => {this.findAllModulesForGivenCourse(this.props.courseId); });
         }
     };
 
 
-    deleteModule = (moduleId) => {
+    deleteModule(moduleId) {
 
         let popupResponse = window.confirm("Are you sure you want to delete this module?");
 
@@ -110,20 +100,19 @@ export default class ModuleList extends React.Component {
                 .catch((error) => {
                     console.log("error deleting module!");
                 })
-                .then(() => { this.findAllModulesForGivenCourse(this.state.courseId); })
+                .then(() => {this.findAllModulesForGivenCourse(this.props.courseId);})
         }
     };
 
 
     render() {
         return (
-            <Router>
                 <div>
                     <input onChange={this.titleChanged}
-                           value={this.state.module.title}
                            placeholder="Add Module Title Here"
                            className="form-control"/>
-                    <button onClick={this.createModule} className="btn btn-primary btn-block">
+                    <button className="btn btn-primary btn-block"
+                            onClick={this.createModule}>
                         <i className="fa fa-plus"></i>
                     </button>
                     <br/>
@@ -131,7 +120,6 @@ export default class ModuleList extends React.Component {
                         {this.renderListOfModules()}
                     </ul>
                 </div>
-            </Router>
         );
     }
 }

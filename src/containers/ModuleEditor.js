@@ -12,8 +12,8 @@ export default class ModuleEditor
     }
 
     componentDidMount() {
-        this.selectModule(this.props.moduleId);
-        this.selectCourse(this.props.courseId);
+        this.selectModule(this.props.match.params.moduleId);
+        this.selectCourse(this.props.match.params.courseId);
     }
 
     componentWillReceiveProps(newProps) {
@@ -32,7 +32,8 @@ export default class ModuleEditor
     render() {
         return(
             <div>
-                <LessonTabs moduleId={this.state.moduleId} courseId={this.state.courseId}/>
+                <LessonTabs moduleId={this.props.match.params.moduleId}
+                            courseId={this.props.match.params.courseId}/>
             </div>
         );
     }

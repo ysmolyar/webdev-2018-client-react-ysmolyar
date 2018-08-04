@@ -6,6 +6,15 @@ import '../styles/CourseRow.css';
 
 class CourseRow extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            course: {
+                modified: ''
+            }
+        };
+    }
+
     static getCurrentTime(dateTime) {
         return new Date(dateTime).toISOString().slice(0, 19).replace('T', ' ');
     }
@@ -14,9 +23,8 @@ class CourseRow extends React.Component {
     render() {
         return (
             <tr className="row courseRow">
-
                 <td className="col-sm-5 courseLink">
-                <Link to={`/course/${this.props.course.id}/edit`}>
+                <Link to={`/course/${this.props.course.id}`}>
                     <span><i className="fa fa-bars blue-bars"></i>
                     {this.props.course.title}
                     </span>
@@ -32,8 +40,8 @@ class CourseRow extends React.Component {
                 </td>
 
                 <td className="deleteBtn col-sm-auto">
-                    <i className="fa fa-trash pull-right" onClick={() => {
-                        this.props.delete(this.props.course.id)}}></i>
+                    <i className="fa fa-trash pull-right"
+                       onClick={() => {this.props.delete(this.props.course.id)}}></i>
                 </td>
 
             </tr>

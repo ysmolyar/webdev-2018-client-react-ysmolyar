@@ -42,23 +42,13 @@ class CourseServiceClient {
 
 
     updateCourse(courseId, course) {
-        var date = new Date();
-        var thisCourse = {
-            title: course.title,
-            modified: date.getTime(),
-            modules: course.modules
-        };
-
         return fetch(COURSE_API_URL + '/' + courseId, {
-            method: 'put',
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(thisCourse)
-        })
-            .then(function (response) {
-                return response.json();
-            });
+            body: JSON.stringify(course)
+        });
     }
 
     deleteCourse(courseId) {

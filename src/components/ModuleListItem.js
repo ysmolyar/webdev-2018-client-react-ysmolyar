@@ -14,13 +14,12 @@ export default class ModuleListItem extends React.Component {
     render() {
         return(
             <li className="list-group-item">
-                <Link to={`/course/${this.props.courseId}/module/${this.props.module.id}`}
-                      onClick={() =>  this.props.editModule(this.props.module.id)}>
+                <Link to={`/course/${this.props.courseId}/module/${this.props.module.id}`}>
                     {this.props.module.title}
                 </Link>
                 <span className="pull-right">
           <i style={{'marginRight': '5px'}} className="fa fa-times"
-                            onClick={this.props.delete(this.props.module.id)}></i>
+                            onClick={() => {this.props.delete(this.props.module.id);}}></i>
                 </span>
             </li>
         )
