@@ -36,12 +36,10 @@ export default class WidgetListComponent extends React.Component {
                         onClick={() => {this.props.createWidget()}}
                         className="btn btn-primary"
                         hidden={this.props.preview}>Add Widget</button>
-                    {this.props.widgets.map((widget, index)=>{
-                            widget.ordering = index;
+                    {this.props.widgets.map((widget)=>{
                             let widgetType;
                             return(
-                                <li className="list-group-item"
-                                    key={index}>
+                                <li className="list-group-item">
                                     <div hidden={this.props.preview}>
                                         <button className="pull-right btn btn-danger"
                                                 onClick={() => this.props.deleteWidget(widget.id)}>

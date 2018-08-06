@@ -17,6 +17,7 @@ export const ListWidget = ({widget, updateWidget, preview}) => {
                 <select ref={node => listType = node}
                         className="form-control"
                         id="listType"
+                        defaultValue="Unordered"
                         value={widget.listType}
                         onChange={() => {
                             widget.listType = listType.value;
@@ -59,8 +60,7 @@ export const ListWidget = ({widget, updateWidget, preview}) => {
             </ol>}
 
             {widget.listType === "Unordered" && widget.listItems !== '' &&
-            <ul>
-                {widget.listItems
+            <ul>{widget.listItems
                     .split('\n')
                     .map((item, index) => (<li key={index}>{item}</li>))}
             </ul>}
