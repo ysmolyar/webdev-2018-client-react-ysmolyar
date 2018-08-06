@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import WidgetListItem from '../components/WidgetListComponent';
+import WidgetListComponent from '../components/WidgetListComponent';
 
 const stateToPropertyMapper = state => ({
     widgets: state.widgets,
@@ -62,6 +62,6 @@ const dispatcherToPropertyMapper = dispatch => ({
     });
 
 const WidgetListContainer =
-    connect(stateToPropertyMapper, dispatcherToPropertyMapper)(WidgetListItem);
+    connect(stateToPropertyMapper, dispatcherToPropertyMapper)(WidgetListComponent);
 
 export default WidgetListContainer
