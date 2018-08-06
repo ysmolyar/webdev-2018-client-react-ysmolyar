@@ -12,6 +12,7 @@ import ModuleList from "./ModuleList";
 import CourseEditor from "./CourseEditor";
 import WhiteBoardHeader from "../components/WhiteBoardHeader";
 import ModuleEditor from "./ModuleEditor";
+import WidgetListContainer from "./WidgetListContainer";
 
 
 export default class WhiteBoard extends React.Component {
@@ -37,6 +38,8 @@ export default class WhiteBoard extends React.Component {
                                    component={CourseList}/>
                             <Route path='/course/:courseId'
                                    component={CourseEditor}/>
+                            <Route path='/widgets'
+                                   component={WidgetListContainer}/>
                         </Switch>
                     </div>
                 </Router>
