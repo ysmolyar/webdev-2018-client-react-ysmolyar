@@ -5,7 +5,10 @@ import ModuleList from './ModuleList';
 import CourseServiceClient from '../services/CourseServiceClient';
 import ModuleEditor from './ModuleEditor';
 import {Link, Route} from 'react-router-dom';
+
 import '../styles.css';
+import LessonEditor from "./LessonEditor";
+import WidgetListContainer from "./WidgetListContainer";
 
 export default class CourseEditor extends Component {
 
@@ -16,8 +19,6 @@ export default class CourseEditor extends Component {
             courseId: ''
         };
         this.courseServiceClient = CourseServiceClient.instance;
-        //this.moduleServiceClient = ModuleServiceClient.instance;
-        //this.createModule = this.createModule.bind(this);
 
     }
 
@@ -28,8 +29,6 @@ export default class CourseEditor extends Component {
             .then(course => this.setState({course: course}))
                 .then(() => this.setState({courseId: this.props.match.params.courseId}));
 
-        //this.moduleServiceClient.findAllModulesForGivenCourse(this.props.match.params.courseId)
-        //    .then(modules => this.setState({modules: modules}))
     }
 
 
@@ -54,6 +53,9 @@ export default class CourseEditor extends Component {
                 <div className="col-8">
                     <div className="container-fluid">
                         <Route path="/course/:courseId/module/:moduleId" component={ModuleEditor}/>
+                        <br/>
+                        <Route path='/course/:courseId/module/:moduleId/lesson/'
+                               component={WidgetListContainer}/>
                     </div>
                 </div>
             </div>

@@ -1,6 +1,6 @@
 
 //https://beastmode-webdev-ysmolyar.herokuapp.com/api/course/CID/module/MID
-const LESSON_CID_MID_API_URL = "http://localhost:8080/api/course/CID/module/MID";
+const LESSON_CID_MID_API_URL = "http://localhost:8080/api/course/CID/module/MID/lesson";
 
 // https://beastmode-webdev-ysmolyar.herokuapp.com/api/lesson
 const LESSON_API_URL = "http://localhost:8080/api/lesson";

@@ -1,8 +1,6 @@
 import React from "react";
 import ModuleListItem from "../components/ModuleListItem";
 import ModuleServiceClient from "../services/ModuleServiceClient";
-import CourseServiceClient from "../services/CourseServiceClient";
-import {BrowserRouter as Router} from 'react-router-dom'
 
 export default class ModuleList extends React.Component {
     constructor(props) {

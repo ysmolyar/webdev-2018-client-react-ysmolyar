@@ -61,7 +61,7 @@ export default class LessonTabs extends React.Component {
     }
 
     titleChanged(event) {
-        this.setState({newLesson: {title: event.target.value}});
+        this.setState({lesson: {title: event.target.value}});
     }
 
     findAllLessonsForGivenModule() {
@@ -119,13 +119,21 @@ export default class LessonTabs extends React.Component {
     render() {
         return(
             <div>
+                <div>
                 <h3>Lesson Tabs</h3>
-
+                <input onChange={this.titleChanged}
+                       placeholder="Add Lesson Title Here"
+                       className="form-control"/>
+                <button className="btn btn-primary btn-block"
+                        onClick={this.createLesson}>
+                    <i className="fa fa-plus"></i>
+                </button>
+                </div>
+                <br/>
                 <ul className="nav nav-tabs">
                     {this.renderLessonTabs()}
                 </ul>
-
             </div>
-        )
+    )
     }
 }

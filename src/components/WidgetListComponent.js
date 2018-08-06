@@ -9,7 +9,6 @@ import {ParagraphWidget} from './widgets/ParagraphWidget';
 export default class WidgetListComponent extends React.Component {
     constructor(props) {
         super(props);
-        let newWidgetType;
     }
 
     componentWillReceiveProps(newProps) {
@@ -36,10 +35,12 @@ export default class WidgetListComponent extends React.Component {
                         onClick={() => {this.props.createWidget()}}
                         className="btn btn-primary"
                         hidden={this.props.preview}>Add Widget</button>
-                    {this.props.widgets.map((widget)=>{
+                    {this.props.widgets.map((widget, idx)=>{
                         let newWidgetType;
+                        widget.ordering = idx;
                         return(
-                            <li className="list-group-item">
+                            <li key={idx}
+                                className="list-group-item">
                                 <div hidden={this.props.preview}>
                                     <button className="pull-right btn btn-danger"
                                             onClick={() => this.props.deleteWidget(widget.id)}>

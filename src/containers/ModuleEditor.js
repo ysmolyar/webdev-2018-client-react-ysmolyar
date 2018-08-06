@@ -1,5 +1,7 @@
 import React from 'react'
 import LessonTabs from './LessonTabs'
+import LessonEditor from "./LessonEditor";
+import CourseEditor from "./CourseEditor";
 
 export default class ModuleEditor
     extends React.Component {

@@ -17,7 +17,6 @@ export const ListWidget = ({widget, updateWidget, preview}) => {
                 <select ref={node => listType = node}
                         className="form-control"
                         id="listType"
-                        defaultValue="Unordered"
                         value={widget.listType}
                         onChange={() => {
                             widget.listType = listType.value;
