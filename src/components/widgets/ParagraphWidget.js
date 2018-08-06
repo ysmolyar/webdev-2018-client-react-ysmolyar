@@ -7,9 +7,7 @@ export const ParagraphWidget = ({widget, updateWidget, preview}) => {
     return (
         <div>
 
-            <h3 hidden={preview}>Paragraph Widget</h3>
-
-            <h4>{widget.name}</h4>
+            <h3 hidden={preview}>Paragraph Widget: {widget.name}</h3>
 
             <div hidden={preview}>
 

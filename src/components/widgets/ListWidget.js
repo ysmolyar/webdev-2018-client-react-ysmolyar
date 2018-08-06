@@ -8,9 +8,7 @@ export const ListWidget = ({widget, updateWidget, preview}) => {
     return (
         <div>
 
-            <h3 hidden={preview}>List Widget</h3>
-
-            <h4>{widget.name}</h4>
+            <h3 hidden={preview}>List Widget: {widget.name}</h3>
 
             <div hidden={preview}>
 

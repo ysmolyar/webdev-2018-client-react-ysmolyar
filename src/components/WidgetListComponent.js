@@ -22,10 +22,12 @@ export default class WidgetListComponent extends React.Component {
         return (
             <div>
                 <div className="pull-right">
+                    <div>
+                    <h6 className="pull-right">Preview</h6>
+                    </div>
                     <ToggleButton onToggle={this.props.togglePreview}
                                   value={this.props.preview}/>
                 </div>
-                <h5 className="pull-right">Preview</h5>
                 <button onClick={() => this.props.saveWidgets(this.props.lessonId)}
                         className="btn btn-success float-right">Save</button>
                 <h3>Widget List ({this.props.widgets.length})</h3>
@@ -34,7 +36,7 @@ export default class WidgetListComponent extends React.Component {
                         onClick={() => {this.props.createWidget()}}
                         className="btn btn-primary"
                         hidden={this.props.preview}>Add Widget</button>
-                    {this.props.widgets.sort((a,b) => a.ordering - b.ordering).map((widget, index)=>{
+                    {this.props.widgets.map((widget, index)=>{
                             widget.ordering = index;
                             let widgetType;
                             return(
@@ -58,16 +60,6 @@ export default class WidgetListComponent extends React.Component {
                                             <option value="IMAGE">Image Widget</option>
                                             <option value="LINK">Link Widget</option>
                                         </select>
-                                        <button onClick={() => this.props.moveDown(widget)}
-                                                hidden={widget.ordering === this.props.widgets.length - 1}
-                                                className="float-right btn btn-warning">
-                                            <i className="fa fa-arrow-down"></i>
-                                        </button>
-                                        <button onClick={() => this.props.moveUp(widget)}
-                                                hidden={widget.ordering === 0}
-                                                className="float-right btn btn-warning">
-                                            <i className="fa fa-arrow-up"></i>
-                                        </button>
                                     </div>
                                     <div>
                                         {widget.type === 'LIST' && <ListWidget widget={widget}

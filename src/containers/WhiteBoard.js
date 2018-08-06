@@ -27,7 +27,7 @@ export default class WhiteBoard extends React.Component {
             <div>
 
                 <WhiteBoardHeader/>
-                <br/>
+                <br/><br/><br/><br/>
 
                 <Router>
                     <div className="container-fluid">
