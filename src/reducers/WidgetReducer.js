@@ -8,7 +8,7 @@ const WIDGET_API_URL = 'http://localhost:8080/api/lesson/';
 const WidgetReducer = (state = initialState, action) => {
     let newState;
     switch (action.type){
-        case 'FIND_ALL_WIDGETS_FOR_TOPIC':
+        case 'FIND_ALL_WIDGETS_FOR_LESSON':
             newState = Object.assign({}, state);
             newState.widgets = action.widgets;
             return newState;
@@ -17,7 +17,7 @@ const WidgetReducer = (state = initialState, action) => {
             return {widgets: action.widgets};
 
         case 'SAVE_WIDGETS':
-            fetch(WIDGET_API_URL+action.topicId+'/widgets', {
+            fetch(WIDGET_API_URL+action.lessonId+'/widgets', {
                 method: 'post',
                 headers: {
                     'content-type': 'application/json'
@@ -45,7 +45,7 @@ const WidgetReducer = (state = initialState, action) => {
                         src:'',
                         href:'',
                         listItems:'',
-                        widgetOrder: state.widgets.length + 1
+                        ordering: state.widgets.length + 1
                     }
                 ]
             };

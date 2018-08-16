@@ -8,12 +8,8 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import "../styles.css";
 import "../styles/CourseList.css"
 import CourseList from "./CourseList";
-import ModuleList from "./ModuleList";
 import CourseEditor from "./CourseEditor";
 import WhiteBoardHeader from "../components/WhiteBoardHeader";
-import ModuleEditor from "./ModuleEditor";
-import WidgetListContainer from "./WidgetListContainer";
-import LessonEditor from "./LessonEditor";
 
 
 export default class WhiteBoard extends React.Component {
